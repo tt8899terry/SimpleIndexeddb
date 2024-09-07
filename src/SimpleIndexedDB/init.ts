@@ -22,7 +22,8 @@ export const setupSchema = (_createSchema: { [key: string]: SchemaFunc }) => {
 const dbInit = async () => {
   if (!indexDbSupported()) return null;
   let indexDb = await openDB(schemaName, version, {
-    upgrade(db, oldVersion, transaction, event) {
+    // TODO: use case for upgrade(db, oldVersion, transaction, event) {
+    upgrade(db) {
       for (let key in createSchema) {
         createSchema[key](db);
       }
