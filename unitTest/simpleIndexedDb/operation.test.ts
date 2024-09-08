@@ -7,9 +7,9 @@ test("simpleIndexedDb operation test ", async () => {
   const schemas: SchemaFuncs = {
     test1Schema: function (db: IDBPDatabase): any {
       let dbName = "test1Schema";
-      if (!db.objectStoreNames.contains(dbName)) {
+      let dbStoreNames = db.objectStoreNames;
+      if (!dbStoreNames.contains(dbName)) {
         let store = db.createObjectStore(dbName, { keyPath: "id" });
-        store.createIndex("uniqueIndex", "id", { unique: true });
       }
     },
   };
@@ -27,8 +27,17 @@ test("simpleIndexedDb operation test ", async () => {
 
   //test insert case fail
   try {
+    const test1ErrorRes = await indexedDB.insert("test1Schema", testPayload1);
+  } catch (err) {
+    expect(err).toBeInstanceOf(DOMException);
+    expect(err.name).toEqual("ConstraintError");
+  }
+
+  //test insert case fail
+  try {
     const test1ErrorRes = await indexedDB.insert("test1Schema1", testPayload1);
   } catch (err) {
     expect(err).toBeInstanceOf(DOMException);
+    expect(err.name).toEqual("NotFoundError");
   }
 });
