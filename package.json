@@ -1,8 +1,16 @@
 {
-  "name": "simpleindexeddb",
+  "name": "simple-indexed-db",
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "main": "./dist/SimpleIndexedDB.umd.cjs",
+  "module": "./dist/SimpleIndexedDB.js",
+  "exports": {
+    ".": {
+      "require": "./dist/SimpleIndexedDB.umd.cjs",
+      "import": "./dist/SimpleIndexedDB.js"
+    }
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -10,6 +18,7 @@
     "test": "vitest"
   },
   "devDependencies": {
+    "@types/node": "^22.5.4",
     "fake-indexeddb": "^6.0.0",
     "jsdom": "^25.0.0",
     "typescript": "^5.5.3",
