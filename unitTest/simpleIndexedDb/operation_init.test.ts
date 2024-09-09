@@ -1,6 +1,6 @@
 import { IDBPDatabase } from "idb";
 import { expect, test } from "vitest";
-import { indexedDB } from "../../src/SimpleIndexedDB";
+import { SimpleIndexedDb } from "../../src/SimpleIndexedDB";
 import { SchemaFuncs } from "../../src/SimpleIndexedDB/type";
 
 test("simpleIndexedDb init", async () => {
@@ -15,19 +15,19 @@ test("simpleIndexedDb init", async () => {
   };
 
   {
-    indexedDB.setupSchema(schemas);
-    let init1Res = await indexedDB.dbInit();
+    SimpleIndexedDb.setupSchema(schemas);
+    let init1Res = await SimpleIndexedDb.dbInit();
     expect(init1Res).toBeInstanceOf(IDBDatabase);
 
     expect(init1Res?.objectStoreNames).toEqual(Object.keys(schemas));
 
-    const testDb = await indexedDB.getDb();
+    const testDb = await SimpleIndexedDb.getDb();
     expect(testDb).toBeInstanceOf(IDBDatabase);
   }
 
   //upgrade db version test
   {
-    indexedDB.setVersion(2);
+    SimpleIndexedDb.setVersion(2);
     schemas = {
       test1Schema: function (db: IDBPDatabase): any {
         let dbName = "test1Schema";
@@ -44,8 +44,8 @@ test("simpleIndexedDb init", async () => {
       },
     };
 
-    indexedDB.setupSchema(schemas);
-    let init2Res = await indexedDB.dbInit();
+    SimpleIndexedDb.setupSchema(schemas);
+    let init2Res = await SimpleIndexedDb.dbInit();
     expect(init2Res).toBeInstanceOf(IDBDatabase);
 
     expect(init2Res?.objectStoreNames).toEqual(Object.keys(schemas));
@@ -55,9 +55,9 @@ test("simpleIndexedDb init", async () => {
       name: "test 1",
     };
 
-    const test1Res = await indexedDB.insert("test1Schema", test1Payload);
+    const test1Res = await SimpleIndexedDb.insert("test1Schema", test1Payload);
     expect(test1Res).toEqual(1);
-    const test2Res = await indexedDB.insert("test2Schema", test1Payload);
+    const test2Res = await SimpleIndexedDb.insert("test2Schema", test1Payload);
     expect(test2Res).toEqual(1);
   }
 });
