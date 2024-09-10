@@ -13,6 +13,13 @@
       "import": "./dist/index.js"
     }
   },
+  "repository": "https://github.com/tt8899terry/SimpleIndexeddb.git",
+  "keywords": [
+    "IndexedDB",
+    "idb",
+    "local",
+    "database"
+  ],
   "author": "Andrew Tan",
   "license": "ISC",
   "scripts": {
