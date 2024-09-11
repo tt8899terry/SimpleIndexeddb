@@ -1,7 +1,7 @@
 {
-  "name": "-simple-idb-easy",
+  "name": "simple-idb-easy",
   "private": false,
-  "version": "0.0.1",
+  "version": "0.0.3",
   "type": "module",
   "main": "./dist/index.umd.cjs",
   "module": "./dist/index.js",
@@ -13,6 +13,7 @@
       "import": "./dist/index.js"
     }
   },
+  "homepage": "https://github.com/tt8899terry/SimpleIndexeddb#readme",
   "repository": "https://github.com/tt8899terry/SimpleIndexeddb.git",
   "keywords": [
     "IndexedDB",
