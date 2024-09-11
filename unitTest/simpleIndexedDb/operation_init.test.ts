@@ -1,6 +1,6 @@
 import { IDBPDatabase } from "idb";
 import { expect, test } from "vitest";
-import { SimpleIndexedDb } from "../../src/SimpleIndexedDB";
+import { simpleIdb as SimpleIndexedDb } from "../../src/SimpleIndexedDB";
 import { SchemaFuncs } from "../../src/SimpleIndexedDB/type";
 
 test("simpleIndexedDb init", async () => {
