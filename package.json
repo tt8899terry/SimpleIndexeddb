@@ -1,16 +1,27 @@
 {
-  "name": "simple-indexed-db",
-  "private": true,
-  "version": "0.0.0",
+  "name": "-simple-idb-easy",
+  "private": false,
+  "version": "0.0.1",
   "type": "module",
-  "main": "./dist/SimpleIndexedDB.umd.cjs",
-  "module": "./dist/SimpleIndexedDB.js",
+  "main": "./dist/index.umd.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "require": "./dist/SimpleIndexedDB.umd.cjs",
-      "import": "./dist/SimpleIndexedDB.js"
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.umd.cjs",
+      "import": "./dist/index.js"
     }
   },
+  "repository": "https://github.com/tt8899terry/SimpleIndexeddb.git",
+  "keywords": [
+    "IndexedDB",
+    "idb",
+    "local",
+    "database"
+  ],
+  "author": "Andrew Tan",
+  "license": "ISC",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -23,6 +34,7 @@
     "jsdom": "^25.0.0",
     "typescript": "^5.5.3",
     "vite": "^5.4.1",
+    "vite-plugin-dts": "^4.2.1",
     "vitest": "^2.0.5"
   },
   "dependencies": {
